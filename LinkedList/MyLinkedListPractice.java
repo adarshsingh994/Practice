@@ -28,6 +28,20 @@ public class MyLinkedListPractice {
         }
     }
     
+    public int countLength(){
+        Node node = head;
+        if(node == null){
+            return 0;
+        }else{
+            int c = 1;
+            while(node != null && node.next != null){
+                c++;
+                node = node.next;
+            }
+            return c;
+        }
+    }
+    
     public void insertAtEnd(int data){
         Node node = new Node(data);
         if(head == null){
@@ -100,6 +114,9 @@ public class MyLinkedListPractice {
         System.out.println("Before Deleting:");
         llist.printList();
         
+        //Print the length before deletion
+        System.out.println("Length before deletion is: " + llist.countLength());
+        
         //Delete a node at a given key
         //llist.deleteNodeAtKey(4);
         
@@ -109,6 +126,9 @@ public class MyLinkedListPractice {
         //Print the list
         System.out.println("After Deleting:");
         llist.printList();
+        
+        //Print the length after deleting
+        System.out.println("Length after deletion is: " + llist.countLength());
     }
     
 }
