@@ -42,6 +42,14 @@ public class MyLinkedListPractice {
         }
     }
     
+    public int countLengthRec(Node head){
+        if(head == null){
+            return 0;
+        }else{
+            return (1 + countLengthRec(head.next));
+        }
+    }
+    
     public void insertAtEnd(int data){
         Node node = new Node(data);
         if(head == null){
@@ -115,7 +123,7 @@ public class MyLinkedListPractice {
         llist.printList();
         
         //Print the length before deletion
-        System.out.println("Length before deletion is: " + llist.countLength());
+        System.out.println("Length before deletion is: " + llist.countLengthRec(llist.head));
         
         //Delete a node at a given key
         //llist.deleteNodeAtKey(4);
