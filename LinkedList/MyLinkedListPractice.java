@@ -110,6 +110,48 @@ public class MyLinkedListPractice {
         }
     }
     
+    public void swapNodes(int x, int y){
+        
+        if(x == y){
+            System.out.println("No need to swap!!");
+        }else{
+            //Get the node with value x and set its previous node 
+            Node currx = head, prevx = null;
+            while(currx != null && currx.data != x){
+                prevx = currx;
+                currx = currx.next;
+            }
+            //Get the node with value y and set its previous node
+            Node curry = head, prevy = null;
+            while(curry != null && curry.data != y){
+                prevy = curry;
+                curry = curry.next;
+            }
+            
+            //Check if node with value x and y was found or not
+            if(currx == null || curry == null){
+                System.out.println("Swappable nodes not found!!");
+            }else{
+                //Check if x node is not head
+                if(prevx != null)
+                    prevx.next = curry;
+                else
+                    head = curry;
+                
+                //Check id y node is not head
+                if(prevy != null)
+                    prevy.next = currx;
+                else
+                    head = currx;
+                
+                // Swap next pointers
+                Node temp = currx.next;
+                currx.next = curry.next;
+                curry.next = temp;
+            }
+        }
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         MyLinkedListPractice llist = new MyLinkedListPractice();
@@ -131,8 +173,11 @@ public class MyLinkedListPractice {
         //Delete a node at a given position
         llist.deleteAtPosition(4);
 
+        //Swap 2 nodes
+        llist.swapNodes(3, 2);
+                
         //Print the list
-        System.out.println("After Deleting:");
+        System.out.println("After Deleting and Swapping:");
         llist.printList();
         
         //Print the length after deleting
