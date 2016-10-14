@@ -152,6 +152,19 @@ public class MyLinkedListPractice {
         }
     }
     
+    public void reverseListIter() {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         MyLinkedListPractice llist = new MyLinkedListPractice();
@@ -182,6 +195,11 @@ public class MyLinkedListPractice {
         
         //Print the length after deleting
         System.out.println("Length after deletion is: " + llist.countLength());
+        
+        //Reversing the Linked List
+        System.out.println("List after reversing:");
+        llist.reverseListIter();
+        llist.printList();
     }
     
 }
