@@ -1,0 +1,35 @@
+def solution(a, K, L):
+    
+    # Check if there is a chance for bob to visit
+    if((len(a) - K) < L):
+        print ('-1')
+        return
+    
+    # Alice
+    maxAlice = 0
+    aliceSection = 0 
+    for i in range(len(a) - K + 1):
+        sum = 0
+        for j in range(K):
+            sum = sum + a[i + j]
+        
+        if(sum > maxAlice):
+            aliceSection = i
+            maxAlice = sum
+    
+    # Remove the ones visited by alice
+    del a[aliceSection : aliceSection + K]
+    
+    # Bob
+    maxBob = 0
+    for i in range(len(a) - L + 1):
+        sum = 0
+        for j in range(L):
+            sum = sum + a[i + j]
+        
+        if(sum > maxBob):
+            maxBob = sum
+        
+    print(maxAlice + maxBob)
+
+solution([10, 32, 7, 8, 98, 45, 1, 8, 54, 88, 19, 15], 5, 9)
